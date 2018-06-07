@@ -5,11 +5,11 @@ import ArcgisTdt from '@/components/ArcgisTdt'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'ArcgisTdt',
-      component: ArcgisTdt
-    }
-  ]
+    routes: [
+        {
+            path: '/',
+            name: 'ArcgisTdt',
+            component: ArcgisTdt
+        }
+    ]
 })

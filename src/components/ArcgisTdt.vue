@@ -44,9 +44,9 @@ export default {
                 .then (obj => {
                     this.initMap (obj);
                 })
-            /* .catch ((err) => {
-                    console.log (err.message);
-                });*/
+                .catch ((err) => {
+                    console.trace (err.message);
+                });
         },
         loading ([// 注意 这里的参数是数组
             Map,
@@ -65,14 +65,11 @@ export default {
             Graphic,
             GraphicsLayer
         ]) {
-            console.log ('loading');
             dojo.declare ('TDT', TiledMapServiceLayer, {
 
                 constructor (maptype) {
                     this._maptype = maptype;
                     this.spatialReference = new SpatialReference ({ wkid: 4326 });
-                    // this.initialExtent = (this.fullExtent = new Extent (97.83, 21.48, 105.60, 29,
-                    //     this.spatialReference));
                     this.initialExtent = (this.fullExtent = new Extent (-180, -90, 180, 90,
                         this.spatialReference));
 
