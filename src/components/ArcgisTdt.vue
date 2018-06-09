@@ -30,15 +30,6 @@ export default {
                 'esri/geometry/Extent',
                 'esri/layers/TileInfo',
                 'esri/geometry/Point',
-                'esri/symbols/PictureMarkerSymbol',
-                'esri/layers/FeatureLayer',
-                'esri/tasks/LengthsParameters',
-                'esri/tasks/AreasAndLengthsParameters',
-                'esri/tasks/GeometryService',
-                'esri/toolbars/draw',
-                'esri/InfoTemplate',
-                'esri/graphic',
-                'esri/layers/GraphicsLayer'
             ])
                 .then (this.loading)
                 .then (obj => {
@@ -55,15 +46,6 @@ export default {
             Extent,
             TileInfo,
             Point,
-            PictureMarkerSymbol,
-            FeatureLayer,
-            LengthsParameters,
-            AreasAndLengthsParameters,
-            GeometryService,
-            Draw,
-            InfoTemplate,
-            Graphic,
-            GraphicsLayer
         ]) {
             dojo.declare ('TDT', TiledMapServiceLayer, {
 
@@ -167,23 +149,14 @@ export default {
                             level + '&TILEROW=' + row + '&TILECOL=' + col + '&FORMAT=tiles';
                 }
             });
-            return { // return 之后才能好似用链式调用
+            return { // return 之后才能使用链式调用
                 Map,
                 TiledMapServiceLayer,
                 SpatialReference,
                 Extent,
                 TileInfo,
                 Point,
-                PictureMarkerSymbol,
-                FeatureLayer,
-                LengthsParameters,
-                AreasAndLengthsParameters,
-                GeometryService,
-                Draw,
                 TDT,
-                InfoTemplate,
-                Graphic,
-                GraphicsLayer,
             };
         },
         initMap(obj){

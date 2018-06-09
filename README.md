@@ -1,20 +1,13 @@
 # vue-arcgis
 
-> A Vue.js project
+> vue-arcgis
 
 ## Build Setup
 
-``` bash
-# install dependencies
-npm install
+详情请看代码;每行都有注释;对 arcgis 稍微有点了解就能看懂.
+至于后续更深入的开发,请参考arcgis API.
 
-# serve with hot reload at localhost:8080
-npm run dev
+总体思路就是 : 先加载 modules,然后 new 出 modules 的实例,配置相关参数即可.
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
+代码中加载模块的来源是  `'http://jsapi.thinkgis.cn/`;国内访问 arcgis 官网快很多.API 地址是[这个](http://jshelp.thinkgis.cn/);目前的版本貌似是 3.12;
+如果是使用高版本的请绕道.
