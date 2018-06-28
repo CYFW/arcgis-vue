@@ -4,7 +4,7 @@
 import esriLoader from 'esri-loader';
 import tileInfo from './tdt_data'
 class Methods {
-    loadArcgis () {
+    loadArcgis () {// 该方法用于加载 arcgis 依赖的js,css 等
         esriLoader.loadScript ({ // 加载js
             url: 'http://jsapi.thinkgis.cn/dojo/dojo.js'
         });
@@ -23,12 +23,12 @@ class Methods {
             .then (obj => {
                 this.initMap (obj);
             })
-            /*.catch ((err) => {
+            .catch ((err) => {
                 console.trace (err.message);
-            });*/
+            });
     }
 
-    loading ([// 注意 这里的参数是数组
+    loading ([// 注意 这里的参数是数组,该方法用于自定义TiledMapServiceLayer加载天地图;
         Map,
         TiledMapServiceLayer,
         SpatialReference,
@@ -69,7 +69,7 @@ class Methods {
 
 
 
-    initMap (obj) {
+    initMap (obj) { // 初始化地图,并设置中心点等
         this.mapObj = obj;// 将对象保存到vue data 的 maoObj中,方便调用;
         let map = new this.mapObj.Map ('map', { logo: false });// 创建地图实例
         var pt = new this.mapObj.Point (105, 29); // 设置中心点
