@@ -7,8 +7,11 @@ import tileInfo from './tdt_data';
 class Methods {
     loadArcgis () {// 该方法用于加载 arcgis 依赖的js,css 等
         esriLoader.loadScript ({ // 加载js
-            url: 'http://' + location.host + '/static/dojo/dojo.js'
-            // url: 'http://jsapi.thinkgis.cn/dojo/dojo.js'
+            url: 'http://' + location.host + '/static/dojo/dojo.js',
+            // url: 'http://jsapi.thinkgis.cn/dojo/dojo.js',
+            dojoConfig: {
+                async: true
+            },
         });
         // 加载css
         esriLoader.loadCss ('http://' + location.host + '/static/esri/css/esri.css');
@@ -21,7 +24,9 @@ class Methods {
             'esri/geometry/Extent',
             'esri/layers/TileInfo',
             'esri/geometry/Point',
-        ])
+        ], {
+            url: 'http://' + location.host + '/static/dojo/dojo.js'
+        })
             .then (this.loading)
             .then (obj => {
                 this.initMap (obj);

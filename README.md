@@ -18,7 +18,17 @@
 * 关于本地 API : 
  * 1 将arcgis API js 放到了 `static` 目录下,这样做的好处是在不用启动tomcat;直接可以进行开发,坏处是,会有个警告,警告内容是 : ` Synchronous XMLHttpRequest on 
  the main thread is deprecated because of its detrimental effects to the end user's experience.`,这句话的意思是 : 
- '不建议使用同步的网络请求,这样会对用户体验产生不好的影响',解决方案是 : 注释掉 dojo.js 中的 async:0,但是这样做的话,在用 esri-loader 去加载的话 then()回调里面的状态会有问题
+ `由于主线程上的同步网络请求影响用户的最终体验,所以被弃用`,解决方案是,加载的时候传入`async:true`  
+    ```javascript
+    esriLoader.loadScript ({ // 加载js
+        url: 'http://' + location.host + '/static/dojo/dojo.js',
+        dojoConfig: {
+            async: true// 异步发送网络请求
+        },
+    });
+    ```
+ 
+ 
  .有可能在网络相应的模块没加载完成的时候执行then()里面的回调,是这样理解的,具体情况有待考究. 
 
 * 详情请看代码;每行都有注释;对 arcgis稍微有点了解就能看懂.至于后续更深入的开发,请参考arcgis API.
