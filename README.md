@@ -1,14 +1,11 @@
 # vue-arcgis
 
-> vue-arcgis
-
-详情请看代码;每行都有注释;对 arcgis 稍微有点了解就能看懂.
-至于后续更深入的开发,请参考arcgis API.
+> 注：当前项目由于包含了API,体积较大,因此,在码云上也同步更新,国内用户可以优先使用码云的. [地址](https://gitee.com/w_jq/arcgis-vue);
 
 总体思路就是 : 先加载 modules,然后 new 出 modules 的实例,配置相关参数即可.
 
 代码中加载模块的来源是  `'http://jsapi.thinkgis.cn/`;国内访问 arcgis 官网快很多.API 地址是[这个](http://jshelp.thinkgis.cn/);目前的版本貌似是 3.12;
-如果是使用高版本的请绕道.
+参考本地部署的;
 
 * 关于windows 本地部署API: 
 	* 1 首先下载API 压缩包:[下载地址](https://developers.arcgis.com/sign-in?redirect_uri=%2Fdownloads%2Fapis-and-sdks);账号注册不了,我是用谷歌账户登录的,需要科学上网才行;
@@ -17,3 +14,11 @@
 	* 解压下载好的zip文件;一次打开目录 `~/arcgis_js_v324_api\arcgis_js_api\library\3.24\3.24`,把所有的文件复制到`~tomcat/webapps/arcgis`目录下;
 	* 4 修改 `init.js`和`dojo.js`.修改方式参考 API 压缩包中的  `install_api_windows.html` 如果是按照上面的操作,修改后是这样的`baseUrl:"http://localhost:8080/arcgis/dojo"`;
 	* 5 启动 tomcat,浏览器地址栏输入 `http://localhost:8080/arcgis/init.js`能够正常显示,则说明正常.
+
+* 关于本地 API : 
+ * 1 将arcgis API js 放到了 `static` 目录下,这样做的好处是在不用启动tomcat;直接可以进行开发,坏处是,会有个警告,警告内容是 : ` Synchronous XMLHttpRequest on 
+ the main thread is deprecated because of its detrimental effects to the end user's experience.`,这句话的意思是 : 
+ '不建议使用同步的网络请求,这样会对用户体验产生不好的影响',解决方案是 : 注释掉 dojo.js 中的 async:0,但是这样做的话,在用 esri-loader 去加载的话 then()回调里面的状态会有问题
+ .有可能在网络相应的模块没加载完成的时候执行then()里面的回调,是这样理解的,具体情况有待考究. 
+
+* 详情请看代码;每行都有注释;对 arcgis稍微有点了解就能看懂.至于后续更深入的开发,请参考arcgis API.
