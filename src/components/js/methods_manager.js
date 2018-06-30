@@ -2,14 +2,17 @@
  * Created by W on 2018-06-28 22:06.
  */
 import esriLoader from 'esri-loader';
-import tileInfo from './tdt_data'
+import tileInfo from './tdt_data';
+
 class Methods {
     loadArcgis () {// 该方法用于加载 arcgis 依赖的js,css 等
         esriLoader.loadScript ({ // 加载js
-            url: 'http://jsapi.thinkgis.cn/dojo/dojo.js'
+            url: 'http://' + location.host + '/static/dojo/dojo.js'
+            // url: 'http://jsapi.thinkgis.cn/dojo/dojo.js'
         });
         // 加载css
-        esriLoader.loadCss ('http://jsapi.thinkgis.cn/esri/css/esri.css');
+        esriLoader.loadCss ('http://' + location.host + '/static/esri/css/esri.css');
+        // esriLoader.loadCss ('http://jsapi.thinkgis.cn/esri/css/esri.css');
         // 加载模块
         esriLoader.loadModules ([
             'esri/map',
@@ -68,7 +71,6 @@ class Methods {
     }
 
 
-
     initMap (obj) { // 初始化地图,并设置中心点等
         this.mapObj = obj;// 将对象保存到vue data 的 maoObj中,方便调用;
         let map = new this.mapObj.Map ('map', { logo: false });// 创建地图实例
@@ -80,4 +82,5 @@ class Methods {
         map.addLayer (cia)
     }
 }
-export default new Methods()
+
+export default new Methods ()
